@@ -1,0 +1,92 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<ui:define name="titulo">Novo Cliente</ui:define>
+	
+	
+	<ui:define name="corpo">
+		<h1>Novo Cliente</h1>
+		<h:form>				
+		<p:panelGrid columns="2" id="painel" style="width:100%; margin-top: 20px;" columnClasses="rotulo, campo">
+				<f:facet name="header">
+			        <p:row>
+			            <p:column colspan="7">Dados Cliente</p:column>
+			        </p:row>
+	    		</f:facet>
+						
+				<p:outputLabel value="Nome" for="nome"/>		
+				<p:inputText id="nome" size="20" maxlength="20" value="#{cadastroClienteControlador.cliente.nome}"/>
+				
+				<p:outputLabel value="cpf" for="cpf"/>
+				<p:inputMask mask="999.999.999-99" id="cpf" value="#{cadastroClienteControlador.cliente.cpf}" />
+				
+				<p:outputLabel value="Data de Nascimento" for="dataNascimento"/>
+				<p:inputMask mask="99/99/9999" id="dataNascimento" value="#{cadastroClienteControlador.cliente.dataNascimento}" />								
+		</p:panelGrid>
+		
+		<p:panelGrid columns="2" id="painel2" style="width:100%; margin-top: 20px;" columnClasses="rotulo, campo">
+				
+				<f:facet name="header">
+			        <p:row>
+			            <p:column colspan="7">Endereço</p:column>
+			        </p:row>
+			   </f:facet>
+				
+				<p:outputLabel value="Logradouro" for="logradouro"/>		
+				<p:inputText id="logradouro" size="100" maxlength="100" value="#{cadastroClienteControlador.cliente.endereco.logradouro}"/>
+				
+				<p:outputLabel value="Numero" for="numero"/>		
+				<p:inputText id="numero" size="9" maxlength="9" value="#{cadastroClienteControlador.cliente.endereco.numero}"/>
+				
+				<p:outputLabel value="Complemento" for="complemento"/>		
+				<p:inputText id="complemento" size="50" maxlength="50" value="#{cadastroClienteControlador.cliente.endereco.complemento}"/>
+				
+				<p:outputLabel value="Bairro" for="bairro"/>		
+				<p:inputText id="bairro" size="30" maxlength="30" value="#{cadastroClienteControlador.cliente.endereco.bairro}"/>
+				
+				<p:outputLabel value="Cidade" for="cidade"/>		
+				<p:inputText id="cidade" size="50" maxlength="50" value="#{cadastroClienteControlador.cliente.endereco.cidade}"/>								
+        		
+        		<p:outputLabel for="estado" value="Estados: " />
+       			<p:selectOneMenu id="estado" value="#{cadastroClienteControlador.cliente.endereco.estado}">
+            		<f:selectItem itemLabel="Selecione o estado" itemValue="" />
+           			<f:selectItems value="#{cadastroClienteControlador.estados}" />
+        		</p:selectOneMenu>
+				
+		</p:panelGrid>
+		
+		<p:panelGrid columns="2" id="painel3" style="width:100%; margin-top: 20px;" columnClasses="rotulo, campo">
+				
+				<f:facet name="header">
+			        <p:row>
+			            <p:column colspan="7">Telefones</p:column>
+			        </p:row>
+			   </f:facet>
+
+				<p:outputLabel value="Telefone Fixo" for="telFixo"/>
+				<p:inputMask mask="(99) 99999-9999" id="telFixo" value="#{cadastroClienteControlador.cliente.telefoneFixo.numero}" />
+				
+				<p:outputLabel value="Celular" for="telCelular"/>
+				<p:inputMask mask="(99) 99999-9999" id="telCelular" value="#{cadastroClienteControlador.cliente.telefoneCelular.numero}" />
+				
+				<p:outputLabel value="Fax" for="telFax"/>
+				<p:inputMask mask="(99) 99999-9999" id="telFax" value="#{cadastroClienteControlador.cliente.telefoneFax.numero}" />
+				
+		</p:panelGrid>
+		<br />
+		<p:separator style="margin-top: 20px;"/>
+		<br />
+		<div align="center">
+			<p:button value="Novo" outcome="/clientes/cadastroCliente" />				
+			<p:commandButton value="Salvar" id="botaoSalvar" action="#{cadastroClienteControlador.salvar()}" />				
+		</div>
+
+		</h:form>
+	</ui:define>
+	
+</ui:composition>	
+	

@@ -1,0 +1,4 @@
+br\com\memory\bean\Telefone.class
+br\com\memory\bean\Endereco.class
+br\com\memory\bean\Cliente.class
+br\com\memory\controlador\CadastroClienteControlador.class

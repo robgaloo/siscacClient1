@@ -1,0 +1,54 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<ui:define name="titulo">Lista Clientes</ui:define>	
+	
+	<ui:define name="corpo">
+		<h1>Lista Clientes</h1>
+
+		<h:form>				
+			<p:panelGrid columns="2" id="painel" style="width:100%; margin-top: 20px;" columnClasses="rotulo, campo">
+					<f:facet name="header">
+				        <p:row>
+				            <p:column colspan="7">Lista Clientes</p:column>
+				        </p:row>
+		    		</f:facet>
+		    		
+		    		<p:dataTable var="cliente" value="#{cadastroClienteControlador.clientes}">
+					    <p:column headerText="CPF">
+					        <h:outputText value="#{cliente.cpf}" />
+					    </p:column>
+					 
+					    <p:column headerText="Nome" >
+					        <h:outputText value="#{cliente.nome}" />
+					    </p:column>
+					 
+					    <p:column headerText="Data Nascimento" >
+					        <h:outputText value="#{cliente.dataNascimento}" />
+					    </p:column>
+					 
+					    <p:column headerText="Celular">
+					        <h:outputText value="#{cliente.telefoneCelular.numero}" />
+					    </p:column>
+					    
+					    <p:column headerText="Opções" width="9%" >
+					        <p:button action="#{cadastroClienteControlador.editarCliente(cliente)}" value="Editar" title="Editar Cliente" />
+					        <p:button action="#{cadastroClienteControlador.excluirCliente(cliente)}" value="Excluir" title="Excluir Cliente" />
+					    </p:column>
+					</p:dataTable>
+							
+			</p:panelGrid>			
+			<p:separator style="margin-top: 20px;"/>
+			<br />
+			<div align="center">
+				<p:button value="Novo Cliente" outcome="/clientes/cadastroCliente" />														
+			</div>	
+		</h:form>
+	</ui:define>
+	
+</ui:composition>	
+	

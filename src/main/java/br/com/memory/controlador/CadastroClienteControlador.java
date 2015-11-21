@@ -34,7 +34,6 @@ public class CadastroClienteControlador {
 		System.out.println("Fixo: "+cliente.getTelefoneFixo().getNumero());
 		System.out.println("Log: "+cliente.getEndereco().getLogradouro());
 		System.out.println("Numero: "+cliente.getEndereco().getNumero());
-		System.out.println("Bairro: "+cliente.getEndereco().getBairro());
 		
 		return FW_LISTAR_CLIENTES;
 		
